@@ -1,0 +1,25 @@
+=== A3: SPARQL-spørring ===
+
+Spørsmål: Hva er ankomsttiden og antall vogner for togturer som ender på Stabekk?
+
+--- Spørring ---
+
+PREFIX ex:   <https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#>
+PREFIX lab:  <https://home.bawue.de/~horsch/teaching/inf230/lab/>
+
+SELECT ?time (COUNT(?coach) AS ?coaches)
+WHERE {
+  ?tur a ex:TrainJourney ;
+       ex:hasEndStation lab:Stabekk ;
+       ex:arrivalTime   ?time ;
+       ex:operatedBy    ?tog .
+  ?tog ex:hasCoach ?coach .
+}
+GROUP BY ?time
+ORDER BY ?time
+
+--- Resultat ---
+
+?time                          ?coaches
+--------------------------------------
+2026-09-16T10:49:00            8

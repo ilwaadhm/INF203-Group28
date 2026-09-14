@@ -1,56 +1,206 @@
-@base <https://home.bawue.de/~horsch/teaching/inf230/lab/data#>.
+@prefix : <https://home.bawue.de/~horsch/teaching/inf230/lab/data#> .
+@prefix ex: <https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dol: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mso-em: <https://www.purl.org/mso-em#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://home.bawue.de/~horsch/teaching/inf230/lab/data> .
 
-@prefix owl:     <http://www.w3.org/2002/07/owl#>.
-@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix skos:    <http://www.w3.org/2004/02/skos/core#>.
-@prefix xs:      <http://www.w3.org/2001/XMLSchema#>.
-@prefix dcat:    <http://www.w3.org/ns/dcat#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix dol:     <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#>.
-@prefix schema:  <http://schema.org/>.
-@prefix mso-em:  <https://www.purl.org/mso-em#>.
-@prefix ex:      <https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#>.
+<https://home.bawue.de/~horsch/teaching/inf230/lab/data> rdf:type owl:Ontology ;
+                                                          dcterms:creator :Ilwaad ,
+                                                                          :Oswa ;
+                                                          dcterms:issued "2026-09-16"^^dcterms:W3CDTF ;
+                                                          dcterms:license <https://creativecommons.org/licenses/by-nc-sa/4.0/> ;
+                                                          dcterms:title "Train Service ABox"@en .
 
-<> a owl:Ontology;
-   dcterms:title "Train Service ABox"@en;
-   dcterms:issued "2026-09-16"^^dcterms:W3CDTF;
-   dcterms:license <https://creativecommons.org/licenses/by-nc-sa/4.0/>;
-   dcterms:creator <#Oswa>, <#Ilwaad>
+#################################################################
+#    Annotation properties
+#################################################################
 
-# --- Stasjoner ---
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
 
-<Moss> a ex:Station ;
-    rdfs:label "Moss"@no .
 
-<Stabekk> a ex:Station ;
-    rdfs:label "Stabekk"@no .
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
 
-# --- Toget ---
 
-<Train1> a ex:Train ;
-    rdfs:label "Tog 1"@no .
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
 
-# --- 8 vogner ---
 
-<Coach1> a ex:Coach ; rdfs:label "Vogn 1"@no .
-<Coach2> a ex:Coach ; rdfs:label "Vogn 2"@no .
-<Coach3> a ex:Coach ; rdfs:label "Vogn 3"@no .
-<Coach4> a ex:Coach ; rdfs:label "Vogn 4"@no .
-<Coach5> a ex:Coach ; rdfs:label "Vogn 5"@no .
-<Coach6> a ex:Coach ; rdfs:label "Vogn 6"@no .
-<Coach7> a ex:Coach ; rdfs:label "Vogn 7"@no .
-<Coach8> a ex:Coach ; rdfs:label "Vogn 8"@no .
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
 
-<Train1> ex:hasCoach <Coach1>, <Coach2>, <Coach3>, <Coach4>,
-                     <Coach5>, <Coach6>, <Coach7>, <Coach8> .
 
-# --- Togturen ---
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#arrivalTime
+ex:arrivalTime rdf:type owl:AnnotationProperty .
 
-<Journey1> a ex:TrainJourney ;
-    rdfs:label "Moss–Stabekk 09:54"@no ;
-    ex:hasStartStation <Moss> ;
-    ex:hasEndStation   <Stabekk> ;
-    ex:departureTime   "2026-09-16T09:54:00"^^xs:dateTime ;
-    ex:arrivalTime     "2026-09-16T10:49:00"^^xs:dateTime ;
-    ex:operatedBy      <Train1> .
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#departureTime
+ex:departureTime rdf:type owl:AnnotationProperty .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#hasCoach
+ex:hasCoach rdf:type owl:AnnotationProperty .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#hasEndStation
+ex:hasEndStation rdf:type owl:AnnotationProperty .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#hasStartStation
+ex:hasStartStation rdf:type owl:AnnotationProperty .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#operatedBy
+ex:operatedBy rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://purl.org/dc/terms/W3CDTF
+dcterms:W3CDTF rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#Coach
+ex:Coach rdf:type owl:Class .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#Station
+ex:Station rdf:type owl:Class .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#Train
+ex:Train rdf:type owl:Class .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#TrainJourney
+ex:TrainJourney rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Coach1
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Coach1> rdf:type owl:NamedIndividual ,
+                                                                    ex:Coach ;
+                                                           rdfs:label "Vogn 1"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Coach2
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Coach2> rdf:type owl:NamedIndividual ,
+                                                                    ex:Coach ;
+                                                           rdfs:label "Vogn 2"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Coach3
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Coach3> rdf:type owl:NamedIndividual ,
+                                                                    ex:Coach ;
+                                                           rdfs:label "Vogn 3"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Coach4
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Coach4> rdf:type owl:NamedIndividual ,
+                                                                    ex:Coach ;
+                                                           rdfs:label "Vogn 4"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Coach5
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Coach5> rdf:type owl:NamedIndividual ,
+                                                                    ex:Coach ;
+                                                           rdfs:label "Vogn 5"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Coach6
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Coach6> rdf:type owl:NamedIndividual ,
+                                                                    ex:Coach ;
+                                                           rdfs:label "Vogn 6"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Coach7
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Coach7> rdf:type owl:NamedIndividual ,
+                                                                    ex:Coach ;
+                                                           rdfs:label "Vogn 7"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Coach8
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Coach8> rdf:type owl:NamedIndividual ,
+                                                                    ex:Coach ;
+                                                           rdfs:label "Vogn 8"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Journey1
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Journey1> rdf:type owl:NamedIndividual ,
+                                                                      ex:TrainJourney ;
+                                                             rdfs:label "Moss–Stabekk 09:54"@no ;
+                                                             ex:arrivalTime "2026-09-16T10:49:00"^^xsd:dateTime ;
+                                                             ex:departureTime "2026-09-16T09:54:00"^^xsd:dateTime ;
+                                                             ex:hasEndStation <https://home.bawue.de/~horsch/teaching/inf230/lab/Stabekk> ;
+                                                             ex:hasStartStation <https://home.bawue.de/~horsch/teaching/inf230/lab/Moss> ;
+                                                             ex:operatedBy <https://home.bawue.de/~horsch/teaching/inf230/lab/Train1> .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Moss
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Moss> rdf:type owl:NamedIndividual ,
+                                                                  ex:Station ;
+                                                         rdfs:label "Moss"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Stabekk
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Stabekk> rdf:type owl:NamedIndividual ,
+                                                                     ex:Station ;
+                                                            rdfs:label "Stabekk"@no .
+
+
+###  https://home.bawue.de/~horsch/teaching/inf230/lab/Train1
+<https://home.bawue.de/~horsch/teaching/inf230/lab/Train1> rdf:type owl:NamedIndividual ,
+                                                                    ex:Train ;
+                                                           rdfs:label "Tog 1"@no ;
+                                                           ex:hasCoach <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach1> ,
+                                                                       <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach2> ,
+                                                                       <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach3> ,
+                                                                       <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach4> ,
+                                                                       <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach5> ,
+                                                                       <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach6> ,
+                                                                       <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach7> ,
+                                                                       <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach8> .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach1>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach2>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach3>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach4>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach5>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach6>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach7>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Coach8>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Journey1>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Moss>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Stabekk>
+                        <https://home.bawue.de/~horsch/teaching/inf230/lab/Train1>
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

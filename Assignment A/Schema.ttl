@@ -16,7 +16,7 @@
    dcterms:title "Train Service Ontology"@en;
    dcterms:issued "2026-09-16"^^dcterms:W3CDTF;
    dcterms:license <https://creativecommons.org/licenses/by-nc-sa/4.0/>;
-   dcterms:creator <#Oswa>, <#Ilwaad>
+   dcterms:creator <#Oswa>, <#Ilwaad> .
 # --- TBox: Klasser ---
 
 ex:Service a owl:Class ;
@@ -65,3 +65,33 @@ ex:operatedBy a owl:ObjectProperty ;
 ex:hasCoach a owl:ObjectProperty ;
     rdfs:domain ex:Train ;
     rdfs:range  ex:Coach .
+# --- A4: OWL-aksiomer ---
+
+# 1. Togreise opereres av minst ett tog
+ex:TrainJourney rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty ex:operatedBy ;
+    owl:minQualifiedCardinality "1"^^xs:nonNegativeInteger ;
+    owl:onClass ex:Train
+] .
+
+# 2. Togreise har nøyaktig én startstasjon
+ex:TrainJourney rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty ex:hasStartStation ;
+    owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+    owl:onClass ex:Station
+] .
+
+# 3. Togreise har nøyaktig én endestasjon
+ex:TrainJourney rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty ex:hasEndStation ;
+    owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+    owl:onClass ex:Station
+] .
+
+# 4. Det som opererer en togreise, må være et tog (via inverseOf)
+ex:operates owl:inverseOf ex:operatedBy ;
+    rdfs:domain ex:Train ;
+    rdfs:range  ex:TrainJourney .
