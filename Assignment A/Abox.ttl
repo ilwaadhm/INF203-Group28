@@ -1,0 +1,56 @@
+@base <https://home.bawue.de/~horsch/teaching/inf230/lab/data#>.
+
+@prefix owl:     <http://www.w3.org/2002/07/owl#>.
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#>.
+@prefix xs:      <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcat:    <http://www.w3.org/ns/dcat#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dol:     <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#>.
+@prefix schema:  <http://schema.org/>.
+@prefix mso-em:  <https://www.purl.org/mso-em#>.
+@prefix ex:      <https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#>.
+
+<> a owl:Ontology;
+   dcterms:title "Train Service ABox"@en;
+   dcterms:issued "2026-09-16"^^dcterms:W3CDTF;
+   dcterms:license <https://creativecommons.org/licenses/by-nc-sa/4.0/>;
+   dcterms:creator <#Oswa>, <#Ilwaad>
+
+# --- Stasjoner ---
+
+<Moss> a ex:Station ;
+    rdfs:label "Moss"@no .
+
+<Stabekk> a ex:Station ;
+    rdfs:label "Stabekk"@no .
+
+# --- Toget ---
+
+<Train1> a ex:Train ;
+    rdfs:label "Tog 1"@no .
+
+# --- 8 vogner ---
+
+<Coach1> a ex:Coach ; rdfs:label "Vogn 1"@no .
+<Coach2> a ex:Coach ; rdfs:label "Vogn 2"@no .
+<Coach3> a ex:Coach ; rdfs:label "Vogn 3"@no .
+<Coach4> a ex:Coach ; rdfs:label "Vogn 4"@no .
+<Coach5> a ex:Coach ; rdfs:label "Vogn 5"@no .
+<Coach6> a ex:Coach ; rdfs:label "Vogn 6"@no .
+<Coach7> a ex:Coach ; rdfs:label "Vogn 7"@no .
+<Coach8> a ex:Coach ; rdfs:label "Vogn 8"@no .
+
+<Train1> ex:hasCoach <Coach1>, <Coach2>, <Coach3>, <Coach4>,
+                     <Coach5>, <Coach6>, <Coach7>, <Coach8> .
+
+# --- Togturen ---
+
+<Journey1> a ex:TrainJourney ;
+    rdfs:label "Moss–Stabekk 09:54"@no ;
+    ex:hasStartStation <Moss> ;
+    ex:hasEndStation   <Stabekk> ;
+    ex:departureTime   "2026-09-16T09:54:00"^^xs:dateTime ;
+    ex:arrivalTime     "2026-09-16T10:49:00"^^xs:dateTime ;
+    ex:operatedBy      <Train1> .
