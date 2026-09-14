@@ -1,0 +1,28 @@
+A5: Kompetansespørsmål
+
+Spørsmål: Til hvilke tider stopper tog ved en gitt stasjon, og hva er endepunktene deres?
+
+--- SPARQL-spørring ---
+
+PREFIX ex:   <https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#>
+PREFIX lab:  <https://home.bawue.de/~horsch/teaching/inf230/lab/>
+
+SELECT ?tur ?time ?start ?end
+WHERE {
+  ?tur a ex:TrainJourney ;
+       ex:hasEndStation lab:Stabekk ;
+       ex:arrivalTime   ?time ;
+       ex:hasStartStation ?start ;
+       ex:hasEndStation   ?end .
+}
+
+--- Resultat ---
+
+?tur         ?time                    ?start        ?end
+----------------------------------------------------------------
+lab:Journey1  2026-09-16T10:49:00     lab:Moss      lab:Stabekk
+
+--- Konklusjon ---
+
+Ontologien kan besvare kompetansespørsmålet: toget ankommer Stabekk
+kl. 10:49 den 16. september 2026, med startstasjon Moss og endestasjon Stabekk.
