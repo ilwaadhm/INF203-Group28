@@ -1,4 +1,4 @@
-=== A.6 Aristotelian definitions ===
+#A.6 Aristotelian definitions
 ex:TrainJourney
     skos:definition "A train journey is a service that is operated by exactly one train and connects a start station to an end station."@en .
 
