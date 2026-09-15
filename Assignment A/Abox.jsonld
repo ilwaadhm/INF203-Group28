@@ -1,0 +1,91 @@
+{
+  "@context": {
+    "ex": "https://home.bawue.de/~horsch/teaching/inf230/lab/tbox#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "label": "rdfs:label",
+    "hasStartStation": { "@id": "ex:hasStartStation", "@type": "@id" },
+    "hasEndStation":   { "@id": "ex:hasEndStation",   "@type": "@id" },
+    "operatedBy":      { "@id": "ex:operatedBy",      "@type": "@id" },
+    "hasCoach":        { "@id": "ex:hasCoach",        "@type": "@id" },
+    "departureTime":   { "@id": "ex:departureTime",   "@type": "xsd:dateTime" },
+    "arrivalTime":     { "@id": "ex:arrivalTime",     "@type": "xsd:dateTime" }
+  },
+  "@graph": [
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Moss",
+      "@type": "ex:Station",
+      "label": { "@value": "Moss", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Stabekk",
+      "@type": "ex:Station",
+      "label": { "@value": "Stabekk", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Train1",
+      "@type": "ex:Train",
+      "label": { "@value": "Tog 1", "@language": "no" },
+      "hasCoach": [
+        "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach1",
+        "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach2",
+        "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach3",
+        "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach4",
+        "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach5",
+        "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach6",
+        "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach7",
+        "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach8"
+      ]
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach1",
+      "@type": "ex:Coach",
+      "label": { "@value": "Vogn 1", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach2",
+      "@type": "ex:Coach",
+      "label": { "@value": "Vogn 2", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach3",
+      "@type": "ex:Coach",
+      "label": { "@value": "Vogn 3", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach4",
+      "@type": "ex:Coach",
+      "label": { "@value": "Vogn 4", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach5",
+      "@type": "ex:Coach",
+      "label": { "@value": "Vogn 5", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach6",
+      "@type": "ex:Coach",
+      "label": { "@value": "Vogn 6", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach7",
+      "@type": "ex:Coach",
+      "label": { "@value": "Vogn 7", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Coach8",
+      "@type": "ex:Coach",
+      "label": { "@value": "Vogn 8", "@language": "no" }
+    },
+    {
+      "@id": "https://home.bawue.de/~horsch/teaching/inf230/lab/Journey1",
+      "@type": "ex:TrainJourney",
+      "label": { "@value": "Moss–Stabekk 09:54", "@language": "no" },
+      "hasStartStation": "https://home.bawue.de/~horsch/teaching/inf230/lab/Moss",
+      "hasEndStation": "https://home.bawue.de/~horsch/teaching/inf230/lab/Stabekk",
+      "operatedBy": "https://home.bawue.de/~horsch/teaching/inf230/lab/Train1",
+      "departureTime": "2026-09-16T09:54:00",
+      "arrivalTime": "2026-09-16T10:49:00"
+    }
+  ]
+}
