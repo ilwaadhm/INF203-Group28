@@ -16,7 +16,7 @@ Potensielle anvendelser:
 # 2. Bruker-personas
 # Persona 1 – Oswa Shahzad, AI-utvikler
 
-Oswa er en data science-student som jobber med maskinlæringsmodeller. Han trenger å forklare modellens beslutninger til ikke-tekniske interessenter og ønsker å forstå hvilke typer forklaringer et XAI-system kan produsere.
+Oswa er en data science-student som jobber med maskinlæringsmodeller. Hun trenger å forklare modellens beslutninger til ikke-tekniske interessenter og ønsker å forstå hvilke typer forklaringer et XAI-system kan produsere.
 
 # Persona 2 – Ilwaad Mahamed, Forsker
 
