@@ -1,0 +1,28 @@
+#this is the prefix so i dont have to write the whole link every time
+PREFIX : <https://home.bawue.de/~horsch/teaching/inf230/lab/inf230-problem-1.html#>
+
+#we want two columns: time and coaches
+#time = when the trip arrives
+#coaches = how many coaches the train has (we count them)
+SELECT ?time (COUNT(?coach) AS ?coaches)
+WHERE {
+
+  #first find the trip that ends at Stabekk, not any other station
+  ?trip :endStation :StabekkStation ;
+
+        #get the arrival time for that trip
+        :arrivalTime ?time ;
+
+        #get which train is running this trip
+        :isRunBy ?train .
+
+  #now for that train, get each coach it has
+  #this matches one row per coach so we can count them after
+  ?train :hasCoach ?coach .
+}
+
+#group by trip and time so the count is per trip, not all mixed together
+GROUP BY ?trip ?time
+
+#just sorting by time, not necessary but looks nicer
+ORDER BY ?time
