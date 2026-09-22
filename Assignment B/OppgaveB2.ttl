@@ -5,7 +5,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dolce: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> . # DOLCE (Lite), ikke DOLCE-UltraLite/dul
 
-# INF230 - Oppgave B.1 / Gruppe 28 - Explainability and Explanations
 # Personaer: Oswa (AI-utvikler), Ilwaad (Forsker), Mehdi (Larer). Scope = KS1-KS6.
 
 <http://www.inf230.no/explainability> rdf:type owl:Ontology ;
